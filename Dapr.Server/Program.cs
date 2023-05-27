@@ -7,7 +7,6 @@ var config = new ConfigurationBuilder()
    .Build();
 
 Log.Logger = new LoggerConfiguration()
-    //.MinimumLevel.Information()
     .MinimumLevel.Debug()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
     .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
