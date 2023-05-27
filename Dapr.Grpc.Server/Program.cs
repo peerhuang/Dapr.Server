@@ -1,3 +1,5 @@
+using Dapr.Grpc.Server;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
