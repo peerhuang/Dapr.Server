@@ -1,24 +1,22 @@
-﻿using Dapr.Client.Autogen.Grpc.v1;
+﻿using Dapr.AppCallback.Autogen.Grpc.v1;
+using Dapr.Client.Autogen.Grpc.v1;
 using Grpc.Core;
 
-namespace Dapr.Grpc.Server
+public class HelloService : AppCallback.AppCallbackBase
 {
-    public class HelloService : AppCallback.AppCallbackBase
+    public override async Task<InvokeResponse> OnInvoke(InvokeRequest request, ServerCallContext context)
     {
-        public override async Task<InvokeResponse> OnInvoke(InvokeRequest request, ServerCallContext context)
+        switch (request.Method)
         {
-            switch (request.Method)
-            {
-                case "sayhi":
-                    var response = new InvokeResponse();
-                    //var input = ProtobufHelper.Deserialize<HelloRequest>(request.Data.Value);
-                    //response.Data.Value = ProtobufHelper.Serialize(new HelloReply { Message = "ok" });
-                    return response;
+            case "sayhi":
+                var response = new InvokeResponse();
+                //var input = ProtobufHelper.Deserialize<HelloRequest>(request.Data.Value);
+                //response.Data.Value = ProtobufHelper.Serialize(new HelloReply { Message = "ok" });
+                return response;
 
-                default:
+            default:
 
-                    return await base.OnInvoke(request, context);
-            }
+                return await base.OnInvoke(request, context);
         }
     }
 }
