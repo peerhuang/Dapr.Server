@@ -4,3 +4,4 @@
 
 /.vs
 /Dapr.Grpc.Server/obj
+/Dapr.Grpc.Server/bin/Debug/net6.0
