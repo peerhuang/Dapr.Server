@@ -1,8 +1,23 @@
 using Dapr.Grpc.Server;
 using Serilog;
+using Serilog.Events;
+
+var config = new ConfigurationBuilder()
+   .AddJsonFile("appsettings.json")
+   .Build();
 
 Log.Logger = new LoggerConfiguration()
-    .WriteTo.Console()
+    //.MinimumLevel.Information()
+    .MinimumLevel.Debug()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+    .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
+    .Enrich.FromLogContext()
+    .WriteTo.Logger(lg => lg.Filter.ByIncludingOnly(p => p.Level == LogEventLevel.Warning).WriteTo.File("Logs/Warning/logs.txt", rollingInterval: RollingInterval.Day))
+    .WriteTo.Logger(lg => lg.Filter.ByIncludingOnly(p => p.Level == LogEventLevel.Debug).WriteTo.File("Logs/Debug/logs.txt", rollingInterval: RollingInterval.Day))
+    .WriteTo.Logger(lg => lg.Filter.ByIncludingOnly(p => p.Level == LogEventLevel.Error).WriteTo.File("Logs/Error/logs.txt", rollingInterval: RollingInterval.Day))
+    .WriteTo.Logger(lg => lg.Filter.ByIncludingOnly(p => p.Level == LogEventLevel.Information).WriteTo.File("Logs/Information/logs.txt", rollingInterval: RollingInterval.Day))
+    //.WriteTo.Async(c => c.File("Logs/logs.txt", rollingInterval: RollingInterval.Day))
+    .ReadFrom.Configuration(config)
     .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
