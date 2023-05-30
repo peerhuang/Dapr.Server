@@ -21,8 +21,10 @@ namespace Dapr.Grpc
 
         public static ExchangeData ConvertoHello<T>(T value)
         {
-            var data = new ExchangeData();
-            data.Value = Serialize(value);
+            var data = new ExchangeData
+            {
+                Value = Serialize(value)
+            };
             return data;
         }
 
