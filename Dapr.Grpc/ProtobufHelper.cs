@@ -19,16 +19,16 @@ namespace Dapr.Grpc
             return Serializer.Deserialize<T>(mem);
         }
 
-        public static Hello ConvertoHello<T>(T value)
+        public static ExchangeData ConvertoHello<T>(T value)
         {
-            var hello = new Hello();
+            var hello = new ExchangeData();
             hello.Value = Serialize(value);
             return hello;
         }
 
         public static T UnpackHello<T>(Any any)
         {
-            var hello = any.Unpack<Hello>();
+            var hello = any.Unpack<ExchangeData>();
             return Deserialize<T>(hello.Value);
         }
 
@@ -36,7 +36,7 @@ namespace Dapr.Grpc
         {
             using var mem = new MemoryStream();
             Serializer.Serialize(mem, value);
-            var hello = new Hello { Value = ByteString.FromStream(mem) };
+            var hello = new ExchangeData { Value = ByteString.FromStream(mem) };
             return Any.Pack(hello);
         }
     }

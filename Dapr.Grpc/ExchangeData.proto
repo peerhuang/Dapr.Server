@@ -2,6 +2,6 @@ syntax = "proto3";
 
 option csharp_namespace = "Dapr.Grpc";
 
-message Hello {
+message ExchangeData {
   bytes Value = 1;
 }

@@ -7,20 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Grpc\Hello.proto" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Dapr.AspNetCore" Version="1.10.0" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.53.0" />
-    <PackageReference Include="protobuf-net" Version="3.2.26" />
     <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
     <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Protobuf Include="Grpc\Hello.proto" />
   </ItemGroup>
 
 </Project>
