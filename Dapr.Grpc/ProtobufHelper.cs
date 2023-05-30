@@ -21,23 +21,23 @@ namespace Dapr.Grpc
 
         public static ExchangeData ConvertoHello<T>(T value)
         {
-            var hello = new ExchangeData();
-            hello.Value = Serialize(value);
-            return hello;
+            var data = new ExchangeData();
+            data.Value = Serialize(value);
+            return data;
         }
 
         public static T UnpackHello<T>(Any any)
         {
-            var hello = any.Unpack<ExchangeData>();
-            return Deserialize<T>(hello.Value);
+            var data = any.Unpack<ExchangeData>();
+            return Deserialize<T>(data.Value);
         }
 
         public static Any PackHello<T>(T value)
         {
             using var mem = new MemoryStream();
             Serializer.Serialize(mem, value);
-            var hello = new ExchangeData { Value = ByteString.FromStream(mem) };
-            return Any.Pack(hello);
+            var data = new ExchangeData { Value = ByteString.FromStream(mem) };
+            return Any.Pack(data);
         }
     }
 }
