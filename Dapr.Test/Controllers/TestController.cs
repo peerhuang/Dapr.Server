@@ -16,7 +16,7 @@ namespace Dapr.Test.Controllers
             _daprClient = daprClient;
         }
 
-        public Task Get()
+        public void Get()
         {
         }
     }
