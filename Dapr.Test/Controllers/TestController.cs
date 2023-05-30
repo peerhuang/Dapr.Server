@@ -16,6 +16,7 @@ namespace Dapr.Test.Controllers
             _daprClient = daprClient;
         }
 
+        [HttpGet]
         public void Get()
         {
         }
