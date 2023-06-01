@@ -11,6 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dapr.Test", "Dapr.Test\Dapr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{586FFD77-E424-4477-B021-94DB3A1DDC27}"
 	ProjectSection(SolutionItems) = preProject
+		dapr.yml = dapr.yml
 		Dockerfile1 = Dockerfile1
 		Dockerfile2 = Dockerfile2
 	EndProjectSection

@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  dapr-server:
+    image: peerhuang/dapr.server:latest
+    restart: always  
+    environment:
+      - DAPR_HTTP_PORT=62111  
+    network_mode: host
+      
+  dapr-server-dapr:
+    image: "daprio/daprd:latest"
+    restart: always    
+    command: ["./daprd",
+      "--app-id", "dapr-server",
+      "--app-protocol", "grpc",
+      "--app-port", "62110",
+      "--dapr-http-port", "62111",      
+      "--metrics-port", "62112",      
+      "--dapr-grpc-port", "62113",  
+      "-components-path", "/Components",
+      "-config", "/Configuration/config.yaml"
+      ]
+    volumes:
+      - "/root/.dapr/components/:/Components"
+      - "/root/.dapr/:/Configuration"
+    network_mode: host
+  dapr-test:
+    image: peerhuang/dapr.test:latest
+    restart: always  
+    environment:
+      - DAPR_HTTP_PORT=62121  
+    network_mode: host 
+                  
+  dapr-test-dapr:
+    image: "daprio/daprd:latest"
+    restart: always    
+    command: ["./daprd",
+      "--app-id", "dapr-test",
+      "--app-protocol", "grpc",
+      "--app-port", "62120",
+      "--dapr-http-port", "62121",      
+      "--metrics-port", "62122",      
+      "--dapr-grpc-port", "62123",  
+      "-components-path", "/Components",
+      "-config", "/Configuration/config.yaml"
+      ]
+    volumes:
+      - "/root/.dapr/components/:/Components"
+      - "/root/.dapr/:/Configuration"
+    network_mode: host  
