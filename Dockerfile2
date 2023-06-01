@@ -5,5 +5,5 @@ WORKDIR /app
 COPY publish2 .
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo Asia/Shanghai > /etc/timezone
 
-EXPOSE 80
-ENTRYPOINT ["dotnet", "Dapr.Test", "--urls", "http://*:80"]
+EXPOSE 62120
+ENTRYPOINT ["dotnet", "Dapr.Test", "--urls", "http://*:62120"]
