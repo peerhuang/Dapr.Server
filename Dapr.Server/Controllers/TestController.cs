@@ -3,7 +3,7 @@
 namespace Dapr.Server.Controllers
 {
     [Route("[controller]")]
-    public class TestController : Controller
+    public class TestController : ControllerBase
     {
         private readonly ILogger<TestController> _logger;
 
