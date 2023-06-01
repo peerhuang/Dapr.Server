@@ -24,4 +24,10 @@
     <ProjectReference Include="..\Dapr.Grpc\Dapr.Grpc.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="publish_to_dapr.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
