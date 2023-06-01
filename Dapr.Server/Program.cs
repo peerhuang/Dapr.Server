@@ -32,7 +32,7 @@ app.MapGrpcService<HelloService>();
 // Configure the HTTP request pipeline.
 
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(option => { option.DocumentTitle = "Server"; });
 
 app.UseHttpsRedirection();
 

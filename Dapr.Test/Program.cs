@@ -23,14 +23,12 @@ builder.Services.AddControllers();
 builder.Services.AddDaprClient();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
- options.SwaggerDoc("Experiment", new OpenApiInfo() { Title = "凝光天下第一", Version = "all" })
- );
+builder.Services.AddSwaggerGen();
 var app = builder.Build();
 app.UseSerilogRequestLogging();
 // Configure the HTTP request pipeline.
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(option => { option.DocumentTitle = "Test"; });
 
 app.UseHttpsRedirection();
 
