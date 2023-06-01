@@ -18,7 +18,7 @@ namespace Dapr.Test.Controllers
 
         [HttpGet]
         [Route("T1")]
-        public async Task Get(int? count)
+        public async Task<int> Get(int? count)
         {
             _logger.LogInformation("start");
             var dic = new Dictionary<string, object>()
@@ -28,6 +28,7 @@ namespace Dapr.Test.Controllers
 
             var data = await _daprClient.InvokeMethodAsync<object, List<T1>>(HttpMethod.Get, "dapr-server", "/Test/T1", dic);
             _logger.LogInformation($"end({data.Count})");
+            return data.Count;
         }
     }
 }
