@@ -1,4 +1,6 @@
 using Dapr.Grpc.Server;
+using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
 using Serilog;
 using Serilog.Events;
 
@@ -19,12 +21,14 @@ builder.Host.UseSerilog((context, services, configuration) => configuration
     .WriteTo.Console(LogEventLevel.Error));
 
 // Add services to the container.
-
+builder.Services.AddGrpc();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddGrpc();
+//builder.Services.AddSwaggerGen(options =>
+// options.SwaggerDoc("Experiment", new OpenApiInfo() { Title = "凝光天下第一", Version = "all" })
+// );
 var app = builder.Build();
 app.UseSerilogRequestLogging();
 app.MapGrpcService<HelloService>();
