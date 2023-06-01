@@ -5,7 +5,7 @@ services:
     image: peerhuang/dapr.server:latest
     restart: always  
     environment:
-      - DAPR_HTTP_PORT=62111  
+      - DAPR_HTTP_PORT=62011  
     network_mode: host
       
   dapr-server-dapr:
@@ -14,10 +14,10 @@ services:
     command: ["./daprd",
       "--app-id", "dapr-server",
       "--app-protocol", "grpc",
-      "--app-port", "62110",
-      "--dapr-http-port", "62111",      
-      "--metrics-port", "62112",      
-      "--dapr-grpc-port", "62113",  
+      "--app-port", "62010",
+      "--dapr-http-port", "62011",      
+      "--metrics-port", "62012",      
+      "--dapr-grpc-port", "62013",  
       "-components-path", "/Components",
       "-config", "/Configuration/config.yaml"
       ]
@@ -29,7 +29,7 @@ services:
     image: peerhuang/dapr.test:latest
     restart: always  
     environment:
-      - DAPR_HTTP_PORT=62121  
+      - DAPR_HTTP_PORT=62021  
     network_mode: host 
                   
   dapr-test-dapr:
@@ -38,10 +38,10 @@ services:
     command: ["./daprd",
       "--app-id", "dapr-test",
       "--app-protocol", "grpc",
-      "--app-port", "62120",
-      "--dapr-http-port", "62121",      
-      "--metrics-port", "62122",      
-      "--dapr-grpc-port", "62123",  
+      "--app-port", "62020",
+      "--dapr-http-port", "62021",      
+      "--metrics-port", "62022",      
+      "--dapr-grpc-port", "62023",  
       "-components-path", "/Components",
       "-config", "/Configuration/config.yaml"
       ]
