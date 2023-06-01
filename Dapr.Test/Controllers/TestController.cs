@@ -21,7 +21,7 @@ namespace Dapr.Test.Controllers
         public async Task Get(int? count)
         {
             _logger.LogInformation("start");
-            var data = await _daprClient.InvokeMethodAsync<int?, List<T1>>("Dapr-Server", "/Test/T1", count);
+            var data = await _daprClient.InvokeMethodAsync<int?, List<T1>>("dapr-server", "/Test/T1", count);
             _logger.LogInformation($"end({data.Count})");
         }
     }
