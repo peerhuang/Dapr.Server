@@ -18,8 +18,11 @@ namespace Dapr.Test.Controllers
 
         [HttpGet]
         [Route("T1")]
-        public void Get()
+        public async Task Get(int? count)
         {
+            _logger.LogInformation("start");
+            var data = await _daprClient.InvokeMethodAsync<int?, List<T1>>("Dapr.Server", "/Test/T1", count);
+            _logger.LogInformation($"end({data.Count})");
         }
     }
 }

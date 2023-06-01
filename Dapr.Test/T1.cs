@@ -1,4 +1,4 @@
-﻿namespace Dapr.Server
+﻿namespace Dapr.Test
 {
     public class T1
     {
