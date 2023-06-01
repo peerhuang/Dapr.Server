@@ -1,0 +1,58 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  release:
+    types: [released, prereleased]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: publish
+        run: dotnet publish Dapr.Grpc/Dapr.Grpc.csproj --output publish1 --no-restore -c:Release --self-contained false /p:DebugType=None /p:DebugSymbols=false
+      - name: publish
+        run: dotnet publish Dapr.Test/Dapr.Test.csproj --output publish2 --no-restore -c:Release --self-contained false /p:DebugType=None /p:DebugSymbols=false
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta1
+        uses: docker/metadata-action@v4
+        with:
+          images: peerhuang/dapr.server
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3 # docker build & push
+        with:
+          context: .
+          file: ./Dockerfile1
+          push: true
+          tags: ${{ steps.meta1.outputs.tags }}
+          labels: ${{ steps.meta1.outputs.labels }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta2
+        uses: docker/metadata-action@v4
+        with:
+          images: peerhuang/dapr.test
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3 # docker build & push
+        with:
+          context: .
+          file: ./Dockerfile2
+          push: true
+          tags: ${{ steps.meta2.outputs.tags }}
+          labels: ${{ steps.meta2.outputs.labels }}

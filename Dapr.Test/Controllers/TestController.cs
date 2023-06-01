@@ -17,6 +17,7 @@ namespace Dapr.Test.Controllers
         }
 
         [HttpGet]
+        [Route("T1")]
         public void Get()
         {
         }

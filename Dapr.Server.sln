@@ -5,9 +5,15 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dapr.Server", "Dapr.Server\Dapr.Server.csproj", "{D6D399DF-B453-47C6-BA82-584661DDE01B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dapr.Grpc", "Dapr.Grpc\Dapr.Grpc.csproj", "{AB9AF26B-2463-4EBB-89C3-36CB266BB461}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dapr.Grpc", "Dapr.Grpc\Dapr.Grpc.csproj", "{AB9AF26B-2463-4EBB-89C3-36CB266BB461}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dapr.Test", "Dapr.Test\Dapr.Test.csproj", "{117BC0DA-8610-44A4-B51D-749465699C7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dapr.Test", "Dapr.Test\Dapr.Test.csproj", "{117BC0DA-8610-44A4-B51D-749465699C7C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{586FFD77-E424-4477-B021-94DB3A1DDC27}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile1 = Dockerfile1
+		Dockerfile2 = Dockerfile2
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
