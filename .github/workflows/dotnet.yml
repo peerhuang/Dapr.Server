@@ -19,7 +19,7 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
       - name: publish
-        run: dotnet publish Dapr.Grpc/Dapr.Grpc.csproj --output publish1 --no-restore -c:Release --self-contained false /p:DebugType=None /p:DebugSymbols=false
+        run: dotnet publish Dapr.Server/Dapr.Server.csproj --output publish1 --no-restore -c:Release --self-contained false /p:DebugType=None /p:DebugSymbols=false
       - name: publish
         run: dotnet publish Dapr.Test/Dapr.Test.csproj --output publish2 --no-restore -c:Release --self-contained false /p:DebugType=None /p:DebugSymbols=false
       - name: Log in to Docker Hub
