@@ -1,3 +1,4 @@
+using Microsoft.OpenApi.Models;
 using Serilog;
 using Serilog.Events;
 
@@ -22,8 +23,9 @@ builder.Services.AddControllers();
 builder.Services.AddDaprClient();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
+builder.Services.AddSwaggerGen(options =>
+ options.SwaggerDoc("Experiment", new OpenApiInfo() { Title = "凝光天下第一", Version = "all" })
+ );
 var app = builder.Build();
 app.UseSerilogRequestLogging();
 // Configure the HTTP request pipeline.
