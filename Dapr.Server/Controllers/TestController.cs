@@ -17,7 +17,7 @@ namespace Dapr.Server.Controllers
         public List<T1> GetT1(int? count)
         {
             var output = new List<T1>();
-            for (var i = 0; i < (count ?? 10); i++)
+            for (var i = 0; i < (count ?? 1000); i++)
             {
                 output.Add(new T1()
                 {
