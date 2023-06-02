@@ -6,4 +6,4 @@ COPY publish2 .
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo Asia/Shanghai > /etc/timezone
 
 EXPOSE 62120
-ENTRYPOINT ["dotnet", "Dapr.Test.dll", "--urls", "http://*:62120"]
+ENTRYPOINT ["dotnet", "Dapr.Test.dll", "--urls", "http://*:62020"]
