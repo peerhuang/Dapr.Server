@@ -12,7 +12,7 @@ services:
     image: "daprio/daprd:latest"
     restart: always    
     command: ["./daprd",
-      "--app-id", "dapr-server",
+      "--app-id", "Dapr-Server",
       "--app-port", "62010",
       "--dapr-http-port", "62011",      
       "--metrics-port", "62012",      
@@ -36,7 +36,7 @@ services:
     image: "daprio/daprd:latest"
     restart: always    
     command: ["./daprd",
-      "--app-id", "dapr-test",
+      "--app-id", "Dapr-Test",
       "--app-port", "62020",
       "--dapr-http-port", "62021",      
       "--metrics-port", "62022",      
