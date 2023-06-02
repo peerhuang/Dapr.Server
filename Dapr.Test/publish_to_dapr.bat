@@ -4,4 +4,4 @@ echo ***************************************************************************
 cd /d %~dp0
 dapr stop Dapr-Test
 timeout /nobreak /t 3
-dapr run --app-id Dapr-Test --app-port 62020 --dapr-http-port 62021 -- dotnet Dapr.Test.dll --urls "http://*:62020"
+dapr run --app-id Dapr-Test --app-port 62020 -- dotnet Dapr.Test.dll --urls "http://*:62020"

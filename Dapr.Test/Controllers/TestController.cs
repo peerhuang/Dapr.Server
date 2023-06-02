@@ -26,7 +26,7 @@ namespace Dapr.Test.Controllers
                 ["count"] = count
             };
 
-            var data = await _daprClient.InvokeMethodAsync<object, List<T1>>(HttpMethod.Get, "dapr-server", "/Test/T1", dic);
+            var data = await _daprClient.InvokeMethodAsync<object, List<T1>>(HttpMethod.Get, "Dapr-Server", "/Test/T1", dic);
             _logger.LogInformation($"end({data.Count})");
             return data.Count;
         }
