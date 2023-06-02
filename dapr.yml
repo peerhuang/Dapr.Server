@@ -25,6 +25,7 @@ services:
       - "/root/.dapr/components/:/Components"
       - "/root/.dapr/:/Configuration"
     network_mode: host
+
   dapr-test:
     image: peerhuang/dapr.test:latest
     restart: always  
