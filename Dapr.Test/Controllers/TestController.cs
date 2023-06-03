@@ -32,7 +32,7 @@ namespace Dapr.Test.Controllers
         public async Task GetT2()
         {
             _logger.LogInformation("start");
-            await _daprClient.InvokeMethodGrpcAsync("Dapr-Server", "T2");
+            await _daprClient.InvokeMethodGrpcAsync("Dapr-Server", "/Test/T1");
         }
     }
 }
