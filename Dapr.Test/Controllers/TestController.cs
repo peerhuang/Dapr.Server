@@ -23,10 +23,11 @@ namespace Dapr.Test.Controllers
             _logger.LogInformation("start");
             var dic = new Dictionary<string, object>()
             {
-                ["count"] = count
+                ["count"] = count.Value
             };
+            var request = _daprClient.CreateInvokeMethodRequest(HttpMethod.Get, "Dapr-Server", "/Test/T1", dic);
 
-            var data = await _daprClient.InvokeMethodAsync<object, List<T1>>(HttpMethod.Get, "Dapr-Server", "/Test/T1", dic);
+            var data = await _daprClient.InvokeMethodAsync<List<T1>>(request);
             _logger.LogInformation($"end({data.Count})");
             return data.Count;
         }
