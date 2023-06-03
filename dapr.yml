@@ -15,8 +15,8 @@ services:
       "--app-id", "Dapr-Server",
       "--app-port", "62010",
       "--dapr-http-port", "62011",      
-      "--metrics-port", "62012",      
-      "--dapr-grpc-port", "62013",  
+      "--dapr-grpc-port", "62012", 
+      "--metrics-port", "62013",      
       "-components-path", "/Components",
       "-config", "/Configuration/config.yaml"
       ]
@@ -39,8 +39,8 @@ services:
       "--app-id", "Dapr-Test",
       "--app-port", "62020",
       "--dapr-http-port", "62021",      
-      "--metrics-port", "62022",      
-      "--dapr-grpc-port", "62023",  
+      "--dapr-grpc-port", "62022", 
+      "--metrics-port", "62023",      
       "-components-path", "/Components",
       "-config", "/Configuration/config.yaml"
       ]
