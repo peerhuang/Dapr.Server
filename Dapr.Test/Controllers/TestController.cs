@@ -18,18 +18,21 @@ namespace Dapr.Test.Controllers
 
         [HttpGet]
         [Route("T1")]
-        public async Task<int> Get(int? count)
+        public async Task<int> GetT1()
         {
             _logger.LogInformation("start");
-            var dic = new Dictionary<string, object>()
-            {
-                ["count"] = count.Value
-            };
-            var request = _daprClient.CreateInvokeMethodRequest(HttpMethod.Get, "Dapr-Server", "/Test/T1", dic);
-
+            var request = _daprClient.CreateInvokeMethodRequest(HttpMethod.Get, "Dapr-Server", "/Test/T1");
             var data = await _daprClient.InvokeMethodAsync<List<T1>>(request);
             _logger.LogInformation($"end({data.Count})");
             return data.Count;
+        }
+
+        [HttpGet]
+        [Route("T2")]
+        public async Task GetT2()
+        {
+            _logger.LogInformation("start");
+            await _daprClient.InvokeMethodGrpcAsync("Dapr-Server", "T2");
         }
     }
 }
