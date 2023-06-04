@@ -14,7 +14,7 @@ services:
     restart: always    
     command: ["./daprd",
       "--app-id", "Dapr-Server",
-#      "--app-protocol", "grpc",
+#      "--app-protocol", "grpc",    #error
       "--app-port", "62010",
       "--dapr-http-port", "62011",      
       "--dapr-grpc-port", "62012", 
@@ -40,7 +40,7 @@ services:
     restart: always    
     command: ["./daprd",
       "--app-id", "Dapr-Test",
-#      "--app-protocol", "grpc",
+#      "--app-protocol", "grpc",    #error
       "--app-port", "62020",
       "--dapr-http-port", "62021",      
       "--dapr-grpc-port", "62022", 
