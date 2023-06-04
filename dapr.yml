@@ -5,7 +5,8 @@ services:
     image: peerhuang/dapr.server:latest
     restart: always  
     environment:
-      - DAPR_HTTP_PORT=62011  
+      - DAPR_HTTP_PORT=62011
+      - DAPR_GRPC_PORT=62012
     network_mode: host
       
   dapr-server-dapr:
@@ -29,7 +30,8 @@ services:
     image: peerhuang/dapr.test:latest
     restart: always  
     environment:
-      - DAPR_HTTP_PORT=62021  
+      - DAPR_HTTP_PORT=62021
+      - DAPR_GRPC_PORT=62022
     network_mode: host 
                   
   dapr-test-dapr:
