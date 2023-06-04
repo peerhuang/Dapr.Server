@@ -24,5 +24,12 @@ namespace Dapr.Test.Controllers
             var data = await _daprClient.InvokeMethodAsync<List<T1>>(request);
             return data.Count;
         }
+
+        [HttpGet]
+        [Route("sayhi")]
+        public async Task sayhi()
+        {
+            await _daprClient.InvokeMethodGrpcAsync("Dapr-Server", "sayhi");
+        }
     }
 }
